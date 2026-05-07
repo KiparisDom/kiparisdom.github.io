@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Метатеги для корректного отображения и кодировки -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гостевой дом «Кипарис»</title>
+    
+    <!-- Подключение внешних шрифтов от Google (Cormorant и Montserrat) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Подключение основного файла стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- НАВИГАЦИЯ (Шапка сайта) -->
+    <header class="header">
+        <div class="container nav-container">
+            <!-- Логотип компании -->
+            <a href="#" class="logo">Гостевой дом «Кипарис»</a>
+            
+            <!-- Основное меню навигации -->
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#rooms">Номера</a></li>
+                    <li><a href="#amenities">Удобства</a></li>
+                    <li><a href="#near">Рядом</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Иконка бургер-меню для мобильных устройств -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ГЛАВНЫЙ ЭКРАН (Hero Section) -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div> <!-- Блок для фонового изображения с эффектом параллакса -->
+        <div class="hero-content fade-in">
+            <h1>Уют, который<br>вы искали</h1>
+            <p>Ваше идеальное укрытие от городской суеты</p>
+            <a href="#contact" class="btn btn-primary">Забронировать / Связаться</a>
+        </div>
+    </section>
+
+    <!-- БЛОК "О НАС" -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about-content fade-in">
+                <h2 class="section-title">О нашем доме</h2>
+                <p class="lead-text">Добро пожаловать в место, где время замедляет свой ход. Мы создали этот отель с любовью к деталям, чтобы каждый гость мог почувствовать себя как дома, наслаждаясь безупречным сервисом и тишиной.</p>
+                <p>Наш бутик-отель сочетает в себе эстетику минимализма, тепло натуральных материалов и искреннее гостеприимство. Здесь нет случайных вещей — только то, что дарит покой и вдохновение.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК "НОМЕРА" -->
+    <section class="rooms section bg-secondary" id="rooms">
+        <div class="container">
+            <h2 class="section-title fade-in">Наши номера</h2>
+            <div class="rooms-grid">
+                
+                <!-- Карточка номера: Трёхместный -->
+                <div class="room-card fade-in">
+                    <div class="room-img">
+                        <img src="images/three.jpg" alt="Трёхместный Стандартный номер">
+                    </div>
+                    <div class="room-info">
+                        <h3>Трёхместный Стандарт</h3>
+                        <p>Тут идёт описание</p>
+                        <div class="room-price">от 5 500 ₽ / ночь</div>
+                    </div>
+                </div>
+
+                <!-- Карточка номера: Четырёхместный (с задержкой анимации) -->
+                <div class="room-card fade-in" style="transition-delay: 0.1s;">
+                    <div class="room-img">
+                        <img src="images/four.jpg" alt="Четырёхместный Стандарт">
+                    </div>
+                    <div class="room-info">
+                        <h3>Четырёхместный Стандарт</h3>
+                        <p>Тут идёт ваше описание</p>
+                        <div class="room-price">от 8 000 ₽ / ночь</div>
+                    </div>
+                </div>
+
+                <!-- Карточка номера: Пятиместный (с максимальной задержкой анимации) -->
+                <div class="room-card fade-in" style="transition-delay: 0.2s;">
+                    <div class="room-img">
+                        <img src="images/five.jpg" alt="Пятиместный Стандарт">
+                    </div>
+                    <div class="room-info">
+                        <h3>Пятиместный Стандарт</h3>
+                        <p>Тут идёт ваше описание</p>
+                        <div class="room-price">от 14 000 ₽ / ночь</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК "УДОБСТВА В НОМЕРЕ" -->
+    <section class="amenities section" id="amenities">
+        <div class="container">
+            <h2 class="section-title fade-in">Для вашего комфорта</h2>
+            <div class="amenities-grid fade-in">
+                <div class="amenity-item"><div class="amenity-icon">✦</div><span>Душ</span></div>
+                <div class="amenity-item"><div class="amenity-icon">✦</div><span>Туалет</span></div>
+                <div class="amenity-item"><div class="amenity-icon">✦</div><span>Кондиционер</span></div>
+                <div class="amenity-item"><div class="amenity-icon">✦</div><span>Телевизор</span></div>
+                <div class="amenity-item"><div class="amenity-icon">✦</div><span>Бесплатный WiFi</span></div>
+                <div class="amenity-item"><div class="amenity-icon">✦</div><span>Большая кухня (самостоятельная готовка)</span></div>
+                <div class="amenity-item"><div class="amenity-icon">✦</div><span>Бассейн</span></div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">✦</div>
+                    <span>До платного пляжа (галечный) 5 мин на машине, до бесплатного (песочек) 12-15 мин ходьбы спокойным шагом.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- БЛОК "РЯДОМ" (Инфраструктура) -->
+    <section class="amenities section" id="near">
+        <div class="container">
+            <h2 class="section-title fade-in">В шаговой доступности</h2>
+            <div class="amenities-grid fade-in">
+                <div class="amenity-item"><div class="amenity-icon">✦</div><span>Продуктовый Магазин</span></div>
+                <div class="amenity-item"><div class="amenity-icon">✦</div><span>Аптека</span></div>
+                <div class="amenity-item"><div class="amenity-icon">✦</div><span>Автовокзал</span></div>
+                <div class="amenity-item"><div class="amenity-icon">✦</div><span>Аквапарк</span></div>
+                <div class="amenity-item"><div class="amenity-icon">✦</div><span>Дельфинарий</span></div>
+                <div class="amenity-item"><div class="amenity-icon">✦</div><span>Дольмены</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК "ГАЛЕРЕЯ" -->
+    <section class="gallery section bg-secondary" id="gallery">
+        <div class="container">
+            <h2 class="section-title fade-in">Атмосфера</h2>
+            <div class="gallery-grid fade-in">
+                <!-- Классы item-tall и item-wide управляют размером картинки в сетке -->
+                <img src="images/couch.jpg" alt="Деталь интерьера: диван" class="gallery-item item-tall">
+                <img src="images/plant.jpg" alt="Интерьер с растением" class="gallery-item">
+                <img src="images/canteen.jpg" alt="Зона для завтрака" class="gallery-item">
+                <img src="images/wide.jpg" alt="Просторная ванная комната" class="gallery-item item-wide">
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК "ОТЗЫВЫ" -->
+    <section class="reviews section" id="reviews">
+        <div class="container">
+            <h2 class="section-title fade-in">Слова наших гостей</h2>
+            <div class="reviews-grid">
+                <div class="review-card fade-in">
+                    <p class="review-text">"Лучший отель черного моря который я видал в своих завоеваниях"</p>
+                    <p class="review-author">— Наполеон Бонапарт</p>
+                </div>
+                <div class="review-card fade-in" style="transition-delay: 0.1s;">
+                    <p class="review-text">"Ну похуже Рима будет, но на отдохнуть - хорошая идея!"</p>
+                    <p class="review-author">— Гай Юлий Цезарь</p>
+                </div>
+                <div class="review-card fade-in" style="transition-delay: 0.2s;">
+                    <p class="review-text">"Завоевывай себе друзей не пустой лестью, а искренними словами любви."</p>
+                    <p class="review-author">— Сократ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК "КОНТАКТЫ И КАРТА" -->
+    <section class="contact section bg-secondary" id="contact">
+        <div class="container">
+            <div class="contact-wrapper fade-in">
+                
+                <!-- Контактная информация -->
+                <div class="contact-info">
+                    <h2 class="section-title">Ждем вас</h2>
+                    <p class="address">Джубга, ул. Кооперативная д.40<br>Ежедневно, круглосуточно</p>
+                    
+                    <div class="contact-actions">
+                        <p class="phone-display">+7 918 657 8827</p>
+                        <p class="contact-note">Свяжитесь с нами для бронирования. Мы отвечаем быстро (сейчас отвечает Сергей):</p>
+                        <div class="btn-group">
+                            <!-- Ссылки на мессенджеры с открытием в новой вкладке (target="_blank") -->
+                            <a href="https://wa.me/79186578827" class="btn btn-whatsapp" target="_blank">WhatsApp</a>
+                            <a href="https://vk.com/id711532490" class="btn btn-VK" target="_blank">VK</a>
+                            <a href="https://t.me/yourusername" class="btn btn-MAX" target="_blank">MAX</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карта Google -->
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2854.64896836778!2d38.69474907662278!3d44.317166509234724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40f161f45408ebd9%3A0x89522a413759541c!2zVWxpdHNhIEtvb3BlcmF0aXZuYXlhLCA0MCwgRHpodWJnYSwgS3Jhc25vZGFyc2tpeSBrcmF5LCDOoc-Jz4POr86xLCAzNTI4NDQ!5e0!3m2!1sel!2sgr!4v1778178060292!5m2!1sel!2sgr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" title="Карта расположения гостевого дома"></iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ (Footer) -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Бутик-отель «Кипарис». Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Подключение пользовательских скриптов -->
+    <script src="script.js"></script>
+</body>
+</html>

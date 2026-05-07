@@ -1,0 +1,561 @@
+/* ==========================================================================
+   ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ (Цвета, Шрифты, Анимации)
+   ========================================================================== */
+:root {
+    /* Цветовая палитра */
+    --bg-primary: #F8F6F2;     /* Теплый кремовый, основной фон страницы */
+    --bg-secondary: #EFECE5;   /* Мягкий песочный, фон для выделения секций (например, карточек) */
+    --text-main: #2A2522;      /* Теплый темно-коричневый (мягче для глаз, чем чисто черный) */
+    --text-muted: #5C554F;     /* Приглушенный текст для второстепенной информации */
+    --accent-color: #B47C62;   /* Мягкий терракотовый акцент (кнопки, иконки, выделения) */
+    --accent-hover: #9E6B53;   /* Темно-терракотовый для эффектов наведения */
+    
+    /* Типографика */
+    --font-heading: 'Cormorant', serif;     /* Элегантный шрифт для заголовков */
+    --font-body: 'Montserrat', sans-serif;  /* Чистый шрифт для основного текста */
+    
+    /* Плавность анимаций */
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ==========================================================================
+   БАЗОВЫЕ НАСТРОЙКИ (Сброс стилей)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Размеры элементов включают padding и border */
+}
+
+html {
+    scroll-behavior: smooth; /* Плавная прокрутка к якорям на странице */
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-main);
+    background-color: var(--bg-primary);
+    line-height: 1.6;        /* Оптимальное межстрочное расстояние для чтения */
+    overflow-x: hidden;      /* Запрещаем горизонтальную прокрутку */
+}
+
+/* Настройки всех заголовков */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Убираем подчеркивание у ссылок */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==========================================================================
+   КОМПОНЕНТЫ РАЗМЕТКИ
+   ========================================================================== */
+.container {
+    max-width: 1200px; /* Максимальная ширина контента */
+    margin: 0 auto;    /* Центрирование контейнера */
+    padding: 0 20px;   /* Безопасные отступы по бокам */
+}
+
+.section {
+    padding: 120px 0; /* Просторные отступы между секциями */
+}
+
+.bg-secondary {
+    background-color: var(--bg-secondary);
+}
+
+.section-title {
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    text-align: center; /* Заголовки секций по центру */
+}
+
+/* ==========================================================================
+   КНОПКИ
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    padding: 16px 36px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    border: none;
+}
+
+/* Главная акцентная кнопка */
+.btn-primary {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-3px); /* Легкое поднятие при наведении */
+}
+
+/* ==========================================================================
+   НАВИГАЦИЯ (Header & Nav)
+   ========================================================================== */
+.header {
+    position: fixed; /* Фиксируем шапку сверху */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 100;    /* Шапка всегда поверх других элементов */
+    transition: var(--transition-smooth);
+}
+
+/* Состояние шапки при прокрутке страницы */
+.header.scrolled {
+    background-color: rgba(248, 246, 242, 0.95);
+    backdrop-filter: blur(10px); /* Эффект размытия заднего фона */
+    padding: 15px 0;             /* Уменьшаем отступы для компактности */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05); /* Легкая тень */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* Адаптация цвета текста в шапке в зависимости от фона (прозрачный/залитый) */
+.header.transparent .logo,
+.header.transparent .nav-list a {
+    color: #fff;
+}
+
+.header.scrolled .logo,
+.header.scrolled .nav-list a {
+    color: var(--text-main);
+}
+
+.nav-list {
+    display: flex;
+    list-style: none; /* Убираем маркеры списка */
+    gap: 30px;        /* Расстояние между пунктами меню */
+}
+
+.nav-list a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-list a:hover {
+    color: var(--accent-color);
+}
+
+/* Кнопка бургер-меню (скрыта на ПК) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 101; /* Должна быть выше мобильного меню */
+}
+
+.hamburger span {
+    width: 30px;
+    height: 2px;
+    background-color: var(--text-main);
+    transition: 0.3s;
+}
+
+.header.transparent .hamburger span { background-color: #fff; }
+.header.scrolled .hamburger span { background-color: var(--text-main); }
+
+/* ==========================================================================
+   ГЛАВНЫЙ ЭКРАН (Hero)
+   ========================================================================== */
+.hero {
+    height: 100vh; /* Занимает 100% высоты экрана */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110%; /* Добавлен запас в 10% для корректной работы эффекта параллакса */
+    /* Затемнение фона и сама картинка */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/background.jpg') center/cover no-repeat;
+    z-index: -1;
+    transform: translateZ(0); /* Аппаратное ускорение */
+}
+
+.hero-content {
+    text-align: center;
+    color: #fff;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 5.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   СЕКЦИЯ "О НАС"
+   ========================================================================== */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.lead-text {
+    font-size: 1.5rem;
+    font-family: var(--font-heading);
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   СЕКЦИЯ "НОМЕРА"
+   ========================================================================== */
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Адаптивная сетка карточек */
+    gap: 40px;
+}
+
+.room-card {
+    background: var(--bg-primary);
+    transition: var(--transition-smooth);
+}
+
+/* Эффект наведения на карточку номера */
+.room-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+}
+
+.room-img {
+    width: 100%;
+    height: 350px;
+    overflow: hidden; /* Скрываем части картинки при увеличении */
+}
+
+.room-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Картинка заполняет блок без искажений пропорций */
+    transition: transform 0.6s ease;
+}
+
+/* Увеличение картинки при наведении на карточку */
+.room-card:hover .room-img img {
+    transform: scale(1.05);
+}
+
+.room-info {
+    padding: 30px;
+}
+
+.room-info h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.room-info p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.room-price {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* ==========================================================================
+   СЕКЦИЯ "УДОБСТВА И РЯДОМ"
+   ========================================================================== */
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.amenity-item {
+    padding: 30px;
+    border: 1px solid rgba(42, 37, 34, 0.1); /* Легкая граница карточки */
+    transition: var(--transition-smooth);
+}
+
+.amenity-item:hover {
+    background-color: var(--bg-secondary);
+    transform: translateY(-5px);
+}
+
+.amenity-icon {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.amenity-item span {
+    font-size: 1.1rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   СЕКЦИЯ "ГАЛЕРЕЯ" (Masonry Grid Style)
+   ========================================================================== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+    grid-auto-rows: 300px;                 /* Базовая высота ячейки */
+    gap: 20px;
+}
+
+.gallery-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.gallery-item:hover {
+    opacity: 0.9;
+}
+
+/* Специальные классы для создания неоднородной (красивой) сетки */
+.item-tall {
+    grid-row: span 2; /* Занимает 2 ячейки в высоту */
+}
+
+.item-wide {
+    grid-column: span 2; /* Занимает 2 ячейки в ширину */
+    grid-row: span 2;    /* и 2 в высоту */
+}
+
+/* ==========================================================================
+   СЕКЦИЯ "ОТЗЫВЫ"
+   ========================================================================== */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.review-card {
+    padding: 40px;
+    background-color: var(--bg-secondary);
+    border-left: 2px solid var(--accent-color); /* Акцентная полоса слева */
+}
+
+.review-text {
+    font-style: italic;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.review-author {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   СЕКЦИЯ "КОНТАКТЫ"
+   ========================================================================== */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две колонки: информация и карта */
+    gap: 60px;
+    align-items: center;
+}
+
+.contact-info {
+    padding-right: 40px;
+}
+
+.contact-info .section-title {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.address {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    color: var(--text-muted);
+}
+
+.phone-display {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.contact-note {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* Стили кнопок социальных сетей */
+.btn-group {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-whatsapp { background-color: #25D366; color: #fff; }
+.btn-VK { background-color: #0088cc; color: #fff; }
+.btn-MAX { background-color: #007FFF; color: #fff; }
+
+.btn-whatsapp:hover,
+.btn-VK:hover,
+.btn-MAX:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+.contact-map {
+    height: 500px;
+    background-color: #ddd; /* Заглушка, пока грузится Google карта */
+}
+
+/* ==========================================================================
+   ПОДВАЛ (Footer)
+   ========================================================================== */
+.footer {
+    text-align: center;
+    padding: 40px 0;
+    background-color: var(--text-main);
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   АНИМАЦИИ ПРИ СКРОЛЛЕ (Для JS)
+   ========================================================================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px); /* Изначально элементы смещены вниз на 40px */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0); /* Возвращаем на исходную позицию */
+}
+
+/* ==========================================================================
+   АДАПТИВНЫЙ ДИЗАЙН (Media Queries)
+   ========================================================================== */
+
+/* Для планшетов и небольших ноутбуков */
+@media (max-width: 992px) {
+    .section-title { font-size: 2.8rem; }
+    .hero h1 { font-size: 4rem; }
+    
+    /* Контакты перестраиваем в одну колонку */
+    .contact-wrapper { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+    }
+    .contact-info { 
+        padding-right: 0; 
+        text-align: center; 
+    }
+    .contact-info .section-title { text-align: center; }
+    .btn-group { justify-content: center; flex-wrap: wrap; }
+}
+
+/* Для мобильных телефонов */
+@media (max-width: 768px) {
+    /* Показываем кнопку-бургер */
+    .hamburger { display: flex; }
+    
+    /* Скрываем меню за правый край экрана */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--bg-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.4s ease-in-out;
+    }
+    
+    /* Показываем меню, когда добавлен класс active */
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    /* Меняем выравнивание ссылок в мобильном меню */
+    .nav-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+    
+    .nav-list a {
+        font-size: 1.5rem;
+        color: var(--text-main) !important;
+    }
+
+    /* Анимация превращения бургера в "Крестик" */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background-color: var(--text-main);
+    }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background-color: var(--text-main);
+    }
+
+    /* Уменьшение шрифтов для телефонов */
+    .hero h1 { font-size: 3rem; }
+    .phone-display { font-size: 2.2rem; }
+    
+    /* Отключаем masonry-сетку галереи на телефоне, делаем 1 колонку */
+    .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; }
+    .item-wide { grid-column: auto; }
+}
